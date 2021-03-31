@@ -1,20 +1,12 @@
-<hr>
-
 <div>
   <div style="font-size:150%;">
-    Comments
+    <%=  commentable.comments.count %> <%= "#{commentable.comments.size == 1 ? 'Comment' : 'Comments'}"%>
   </div>
 
-  <% if commentable.comments.any? %>
-    <% commentable.comments.each do |comment| %>
-      <div class="text-center p-4 border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
-        <%=comment.body%>
-      </div>
-      <br>
-    <% end %>
-  <% else %>
-    <div class="bg-red-300 p-4">
-      No Comments Available.
+  <% commentable.comments.each do |comment| %>
+    <div class="text-center p-4 border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+      <%= comment.body %>
     </div>
+    <br>
   <% end %>
 </div>

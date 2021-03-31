@@ -10,10 +10,7 @@
     </div>
   <% end %>
 
-  <%#= form.hidden_field :user_id, value:current_user.id %>
-  <%= form.label :user_id, "USER ID" %>
-  <%= form.number_field :user_id, value:current_user.id, class:"form-control" %>
-
+  <%= form.hidden_field :user_id, value: current_user.id  %>
 
   <div class="field">
     <%= form.label :link, "YouTube Video Link:" %>

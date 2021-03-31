@@ -23,8 +23,8 @@ class SitesController < ApplicationController
 
   # GET /sites/new
   def new
-    @site = Site.new
     @user = User.find(params[:user_id])
+    @site = Site.new
   end
 
   # GET /sites/1/edit

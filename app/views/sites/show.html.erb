@@ -19,13 +19,15 @@
         <%= @site.keyword_list %>
       </div>
       <br>
-      <div>
-        <hr>
-        <%= link_to 'Delete', @site, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" if @site.user == current_user %>
-      </div>
 
+      <% if @site.user == current_user %>
+        <div>
+          <hr>
+          <%= link_to 'Delete Video', @site, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+        </div>
+      <% end %>
 
-
+      <hr>
       <%= render partial: "comments/comments", locals:{commentable: @site } %>
       <br>
       <%= render partial: "comments/form", locals:{commentable: @site }%>
