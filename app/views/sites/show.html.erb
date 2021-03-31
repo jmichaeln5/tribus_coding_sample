@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="pb-4">
+    <div class="text-center p-4 border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+      <br>
+      <div style="font-size:150%;">
+         <%= @site.title %>
+      </div>
+      <div>
+        <img src="<%= @site.thumbnail_link %>" alt="" class="center">
+      </div>
+      <br>
+      <div>
+        <strong>YouTube Link:</strong>
+        <%= link_to @site.link, url_for(@site.link), :target => "_blank" %>
+      </div>
+      <br>
+      <div>
+        <strong>Keywords:</strong>
+        <%= @site.keyword_list %>
+      </div>
+      <br>
+      <div>
+        <hr>
+        <%= link_to 'Delete', @site, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" if @site.user == current_user %>
+      </div>
+
+
+
+      <%= render partial: "comments/comments", locals:{commentable: @site } %>
+      <br>
+      <%= render partial: "comments/form", locals:{commentable: @site }%>
+
+
+    </div>
+  </div>
+</div>

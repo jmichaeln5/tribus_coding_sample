@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DeviseLoginTemplate</title>
+    <title>YouTube Scraper</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,17 +21,40 @@
 
   <body class="bg-indigo-100">
     <%=render "layouts/nav"%>
-    <div class="container text-center pt-10 bg-gray-100 h-screen">
+    <div class="container text-center pt-10 pb-10 bg-gray-100">
       <div class="msg-container text-center">
         <% if notice || alert %>
         <span class="notice text-green-700 text-2xl"><%= notice %></span>
         <span class="alert text-red-700 text-2xl"><%= alert %></span>
         <% end %>
       </div>
-      <div class="pl-20 pr-20">
+      <div class="pl-2 pr-2 h-full">
+        <div class="container pb-4">
+          <div class="text-center p-4 border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+            <div style="width:100%;">
+              <div class="display-1" style="font-size:200%;">
+                <%= "#{controller_name.capitalize}" %>
+                <br>
+                <%= "##{action_name.capitalize}" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <%= yield %>
+
+        <% if site_or_registration %>
+        <div>
+          <hr>
+          <br>
+          <div>
+            <%= link_to "Back", :back, class:"btn btn-primary"  %>
+          </div>
+        </div>
+        <% end %>
       </div>
     </div>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script type="text/javascript">
@@ -39,8 +62,6 @@
       setTimeout(function(){
         $('.msg-container').fadeOut().remove();
       }, 3000);
-
-      // $(".msg-container").delay(4000).fadeOut().remove();
 
     </script>
   </body>

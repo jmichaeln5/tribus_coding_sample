@@ -1,5 +1,7 @@
 <div class="pb-4 container">
   <%= link_to 'Add Site', new_user_site_path(current_user), class:"btn btn-success btn-block" %>
+  <%#= render "form_modal" %>
+
 </div>
 
 <% @sites.each do |site| %>

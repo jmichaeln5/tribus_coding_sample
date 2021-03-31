@@ -1,0 +1,34 @@
+<%= form_with(model: [ @user, @user.sites.build ]) do |form| %>
+  <% if site.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(site.errors.count, "error") %> prohibited this site from being saved:</h2>
+      <ul>
+        <% site.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%#= form.hidden_field :user_id, value:current_user.id %>
+  <%= form.label :user_id, "USER ID" %>
+  <%= form.number_field :user_id, value:current_user.id, class:"form-control" %>
+
+
+  <div class="field">
+    <%= form.label :link, "YouTube Video Link:" %>
+    <%= form.text_field :link, class:"form-control" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= form.label :description,"Description(Optional)" %>
+    <%= form.text_area :description, class:"form-control" %>
+  </div>
+  <br>
+  <div class="actions btn btn-success">
+    <%= button_tag(type: 'submit') do %>
+      Create Site
+    <% end %>
+  </div>
+
+<% end %>
