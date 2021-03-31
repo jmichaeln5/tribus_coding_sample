@@ -7,7 +7,6 @@ class SitesController < ApplicationController
   def all_sites
     @user = current_user
     @sites = Site.all.order("created_at DESC")
-    # @sites = Site.where(user_id: @user).order("created_at ASC")
   end
 
   # GET /sites or /sites.json

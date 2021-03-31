@@ -6,5 +6,4 @@ class User < ApplicationRecord
 
   has_many :sites, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
-
 end

@@ -6,6 +6,8 @@
   <% commentable.comments.each do |comment| %>
     <div class="text-center p-4 border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
       <%= comment.body %>
+      <br>
+      <%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-outline-danger" %>
     </div>
     <br>
   <% end %>

@@ -1,4 +1,5 @@
 class Sites::CommentsController < CommentsController
+  before_action :authenticate_user!
   before_action :set_commentable
 
   private
