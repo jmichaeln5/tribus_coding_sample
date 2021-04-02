@@ -17,11 +17,16 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'notifications', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body class="bg-indigo-100">
-    <%=render "layouts/nav"%>
+    <%= render "layouts/nav"%>
     <div class="container text-center pt-10 pb-10 bg-gray-100">
+      <!-- <span id="isLoggedIn">
+        <%= current_user.email if current_user%>
+      </span> -->
       <div class="msg-container text-center">
         <% if notice || alert %>
         <span class="notice text-green-700 text-2xl"><%= notice %></span>
@@ -30,6 +35,7 @@
       </div>
       <div class="pl-2 pr-2 h-full">
         <div class="container pb-4">
+
           <div class="text-center p-4 border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
             <div style="width:100%;">
               <div class="display-1" style="font-size:200%;">
@@ -40,9 +46,7 @@
             </div>
           </div>
         </div>
-
         <%= yield %>
-
         <% if site_or_registration %>
         <div>
           <hr>
@@ -58,6 +62,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script type="text/javascript">
+
+      var customer = $( "#isLoggedIn" ).text().trim()
 
       setTimeout(function(){
         $('.msg-container').fadeOut().remove();

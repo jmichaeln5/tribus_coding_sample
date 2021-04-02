@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :sites, dependent: :destroy
+  has_many :notifications, foreign_key: :recipient_id
   has_many :comments, as: :commentable, dependent: :destroy
 end

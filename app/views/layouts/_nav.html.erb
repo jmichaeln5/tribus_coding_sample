@@ -3,7 +3,7 @@
   <% if current_user.present? == false %>
     <a class="navbar-brand" href="/">YouTube Scraper</a>
   <% else %>
-    <a class="navbar-brand" href="<%= user_sites_path(current_user) %>">YouTube Scraper</a>
+    <a class="navbar-brand" href="<%= dashboard_path %>">YouTube Scraper</a>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,18 +12,22 @@
   <div class="collapse navbar-collapse" id="navbarText">
 
     <ul class="navbar-nav mr-auto">
+
       <li class="nav-item">
         <%= link_to "Dashboard", dashboard_path, class:"nav-link" if current_user %>
       </li>
-      <!-- <li class="nav-item">
-        <%= link_to "User Sites", user_sites_path(current_user), class:"nav-link" if current_user %>
-      </li> -->
+
       <li class="nav-item">
         <%= link_to "Sites", all_sites_path, class:"nav-link" %>
       </li>
-      <li class="nav-item">
+
+      <%= render "notifications/nav_dropdown" %>
+
+
+      <!-- <li class="nav-item">
         <%= link_to "About", pages_about_path, class:"nav-link"%>
-      </li>
+      </li> -->
+
     </ul>
 
     <div class="navbar-text">

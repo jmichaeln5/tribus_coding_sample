@@ -1,33 +1,80 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"bg-gray-200 form-control" %>
-  </div>
+<div class="container">
+  <div class="text-center p-4 border-t-2 border-r-2 border-b-2 border-l-4 border-gray-200">
+    <button class="btn btn-outline-primary">
+      <div id="sample-login">
+          Click Here to Browse
+          <br>
+          Sample Account 1
+      </div>
+    </button>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class:"bg-gray-200 form-control" %>
-  </div>
+    <button class="btn btn-outline-success">
+      <div id="sample-login-2">
+          Click Here to Browse
+          <br>
+          Sample Account 2
+      </div>
+    </button>
 
-  <% if devise_mapping.rememberable? %>
+    <br>
+    <br>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"bg-gray-200 form-control", id:"add-sample-email" %>
+    </div>
+
+
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class:"bg-gray-200 form-control", id:"add-sample-password"  %>
+    </div>
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+    <div class="actions btn btn-success">
+    <%= button_tag(type: 'submit') do %>
+     Login
+    <% end %>
     </div>
   <% end %>
-
-  <!-- <div class="actions">
-    <%= f.submit "Log in" %>
-  </div> -->
-
-  <div class="actions btn btn-success">
-  <%= button_tag(type: 'submit') do %>
-   Login
-  <% end %>
+  <%= render "devise/shared/links" %>
   </div>
+</div>
 
-<% end %>
+<script type="text/javascript">
+
+$( "#sample-login" ).click(function() {
+
+  $( "#add-sample-email" ).empty()
+  $( "#add-sample-password" ).empty()
+
+  var sampleEmail = "SampleAccount@gmail.com";
+  var samplePassword = "sampleaccount";
+
+  $( "#add-sample-email" ).val( sampleEmail )
+  $( "#add-sample-password" ).val( samplePassword )
 
 
 
-<%= render "devise/shared/links" %>
+
+});
+
+$( "#sample-login-2" ).click(function() {
+
+  $( "#add-sample-email" ).empty()
+  $( "#add-sample-password" ).empty()
+
+  var sampleEmail2 = "SampleAccount2@gmail.com";
+  var samplePassword2 = "sampleaccount2";
+
+  $( "#add-sample-email" ).val( sampleEmail2 );
+  $( "#add-sample-password" ).val( samplePassword2 );
+});
+
+
+</script>

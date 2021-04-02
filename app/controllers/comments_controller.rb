@@ -2,12 +2,21 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @comment = @commentable.comments.new comment_params
-    @comment.user = current_user
+  @comment = @commentable.comments.new(comment_params)
+  @comment.user = current_user
     if @comment.save
-      redirect_to @commentable, notice:"Comment Created Successfully."
+      (@comment.commentable.users.uniq - [current_user]).each do |user|
+          @notification = Notification.create(recipient: user, actor: current_user, action:"posted", notifiable: @comment)
+          ActionCable.server.broadcast('notification_channel', 'title' )
+      end
+
+      respond_to do |format|
+        format.html { redirect_to @commentable, :notice => "Comment Created Successfully." }
+        # format.html { redirect_to dashboard_path, :notice => "Comment Created Successfully." }
+        format.js
+      end
     else
-      redirect_to @commentable, alert:"Comment Could Not Be Created."
+      redirect_to @commentable, alert: "Something went wrong..."
     end
   end
 

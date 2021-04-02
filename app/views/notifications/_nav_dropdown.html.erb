@@ -1,0 +1,15 @@
+<% if current_user && current_user.notifications.any? %>
+<li class="nav-item dropdown invisible" data-behavior="notification-items" id="notifications-nav-dropdown">
+  <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="notification-count"></span>
+    <%#= render "notifications/index"%>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <div class="notification-count center" style="font-size:150%;"> </div>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item -mt-4" href="" id="notification-resp"></a>
+      <div class="dropdown-divider"></div>
+      <a href="#" class="center" id="mark-as-read"> Mark as Read</a>
+    </div>
+  </a>
+</li>
+<% end %>

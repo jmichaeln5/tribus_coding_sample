@@ -1,0 +1,49 @@
+
+
+Notifications
+
+
+<!-- Drop  Down -->
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+<div class="dropdown-item">
+<% if @notifications %>
+<% @notifications.each_with_index do | notification, index |%>
+
+  <div id="notification-<%= notification.id %>">
+    <div class=" text-center">
+
+      <span class="text-gray-600 text-sm">
+        <%= index + 1 %>)
+      </span>
+
+      <span>
+      <%= "#{notification.actor.email } #{notification.action} a #{notification.notifiable.class.to_s.underscore.humanize} on"%>
+
+      <%= link_to "#{notification.notifiable.commentable.title}", site_url(notification.notifiable.commentable) %>
+      </span>
+
+      <br>
+
+      <span class="text-gray-600 text-sm">
+        <%= "#{time_ago_in_words(notification.created_at)} ago" %>
+      </span>
+
+    </div>
+
+  </div>
+<% end %>
+<hr>
+<div class="text-center" id="mark-as-read">
+  Mark As Read
+</div>
+<% else %>
+<div class="text-center" id="mark-as-read">
+  No New Notifications
+</div>
+<% end %>
+
+</div>
+
+</div>
