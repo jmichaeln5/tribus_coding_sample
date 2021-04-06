@@ -25,12 +25,8 @@ $(document).ready(function(){
           var notificationOutput = `<a class="dropdown-item center" id="new-notification-${i}" href="${val.url}">  ${val.message}  </a>`
           $(notificationOutput).insertAfter("#notification-resp")
         });
-
         $( "#notifications-nav-dropdown" ).removeClass( "invisible" ).addClass( "visible" );
-
       }
-
-
     });
 
     let mark_as_read = {
@@ -43,7 +39,6 @@ $(document).ready(function(){
     }
 
     $( "#mark-as-read" ).click(function() {
-
       $.ajax(mark_as_read).done(function (response) {
         console.log(response)
         console.log("marked as read.")

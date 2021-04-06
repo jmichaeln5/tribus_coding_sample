@@ -1,18 +1,18 @@
+require 'notify'
+
 class CommentsController < ApplicationController
+  include Notify
   before_action :authenticate_user!
 
   def create
   @comment = @commentable.comments.new(comment_params)
   @comment.user = current_user
+    #   #Module in "lib/notify.rb"
+    affirm_notification(@comment)
     if @comment.save
-      (@comment.commentable.users.uniq - [current_user]).each do |user|
-          @notification = Notification.create(recipient: user, actor: current_user, action:"posted", notifiable: @comment)
-          ActionCable.server.broadcast('notification_channel', 'title' )
-      end
-
       respond_to do |format|
-        format.html { redirect_to @commentable, :notice => "Comment Created Successfully." }
-        # format.html { redirect_to dashboard_path, :notice => "Comment Created Successfully." }
+        # format.html { redirect_to @commentable, :notice => "Comment Created Successfully." }
+        format.html { redirect_to dashboard_path, :notice => "Comment Created Successfully." }
         format.js
       end
     else

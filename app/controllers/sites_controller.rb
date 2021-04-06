@@ -34,7 +34,7 @@ class SitesController < ApplicationController
   def create
     @user = current_user
     @site = Site.new(site_params)
-
+    #   #Module in "lib/scrape.rb"
     get_site(params[:site][:link])
 
     respond_to do |format|
