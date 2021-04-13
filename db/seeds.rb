@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(email: "SampleAccount@gmail.com", password: "sampleaccount", password_confirmation: "sampleaccount")
-User.create(email: "SampleAccount2@gmail.com", password: "sampleaccount2", password_confirmation: "sampleaccount")
-
 5.times do |i|
     User.create(email: "user#{i+1}@gmail.com", password: "password", password_confirmation: "password")
 end
+
+User.create(email: "SampleAccount@gmail.com", password: "sampleaccount", password_confirmation: "sampleaccount")
+User.create(email: "SampleAccount2@gmail.com", password: "sampleaccount2", password_confirmation: "sampleaccount")

@@ -26,6 +26,8 @@ $(document).ready(function(){
           $(notificationOutput).insertAfter("#notification-resp")
         });
         $( "#notifications-nav-dropdown" ).removeClass( "invisible" ).addClass( "visible" );
+
+
       }
     });
 
